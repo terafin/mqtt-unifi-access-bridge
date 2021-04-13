@@ -99,7 +99,7 @@ async function poll() {
                                     logging.info(' => Sending this!')
 
                                     lastPublishTimeMap[user_id] = time
-                                    client.smartPublish(mqtt_helpers.generateTopic(baseTopic, location, 'unlocked'), mqtt_helpers.generateTopic(name), mqttOptions)
+                                    client.publish(mqtt_helpers.generateTopic(baseTopic, location, 'unlocked'), mqtt_helpers.generateTopic(name), mqttOptions)
                                 } else {
                                     logging.debug('  => EVENT IS OLD, based on no poll time, and out of ' + timeToWaitForSlowLogs + 's')
                                 }
