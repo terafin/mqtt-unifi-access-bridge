@@ -1,0 +1,23 @@
+{
+    "name": "mqtt-unifi-access-bridge",
+    "version": "0.0.1",
+    "description": "Bridge Unifi Access HTTP to MQTT",
+    "license": "MIT",
+    "main": "mqtt-unifi-access-bridge.js",
+    "repository": {
+        "url": "https://github.com/terafin/mqtt-unifi-access-bridge"
+    },
+    "scripts": {
+        "start": "node mqtt-unifi-access-bridge.js"
+    },
+    "dependencies": {
+        "homeautomation-js-lib": "https://github.com/terafin/homeautomation-js-lib.git",
+        "lodash": "latest",
+        "mqtt": "latest",
+        "interval-promise": "latest",
+        "got": "latest"
+    },
+    "engines": {
+        "node": ">=10"
+    }
+}
