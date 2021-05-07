@@ -96,7 +96,7 @@ async function poll() {
                                     logging.debug('  => same event, skipping time: ' + time + '   lastPublished: ' + lastPublished)
 
                                 } else if (event_date_diff_in_seconds < timeToWaitForSlowLogs) {
-                                    logging.info(' => Sending this!')
+                                    logging.info(' => Sending unlock for: ' + location + '   topic: ' + mqtt_helpers.generateTopic(baseTopic, location, 'unlocked'))
 
                                     lastPublishTimeMap[user_id] = time
                                     client.publish(mqtt_helpers.generateTopic(baseTopic, location, 'unlocked'), mqtt_helpers.generateTopic(name), mqttOptions)
