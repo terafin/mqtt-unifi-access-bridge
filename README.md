@@ -22,7 +22,7 @@ Here's an example docker compose:
 version: '3.3'
 services:
   mqtt-unifi-access-bridge:
-    image: terafin/mqtt-unifi-access-bridge:latest
+    image: ghcr.io/terafin/mqtt-unifi-access-bridge:latest
     environment:
       LOGGING_NAME: mqtt-unifi-access-bridge
       ACCESS_URL: URL_FOR_UNIFI_ACCESS_LOGIN (eg: https://10.0.1.2)
