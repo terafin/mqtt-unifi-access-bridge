@@ -47,11 +47,11 @@ if (_.isNil(baseTopic)) {
     process.abort()
 }
 
-var connectedEvent = function() {
+var connectedEvent = function () {
     health.healthyEvent()
 }
 
-var disconnectedEvent = function() {
+var disconnectedEvent = function () {
     health.unhealthyEvent()
 }
 
@@ -83,7 +83,8 @@ async function poll() {
                         const time = Number(actual_event.event_time) * 1000
                         const type = actual_event.door_entry_method
                         const user_id = actual_event.user_id
-                        const location = actual_event.location
+                        const location = _.split(actual_event.location, ',', 2)[0]
+                        const floor = _.split(actual_event.location, ',', 2)[1]
                         const event_date = Date(time)
                         const event_date_diff_in_seconds = (now.getTime() - time) / 1000
 
@@ -125,7 +126,7 @@ async function startWatching() {
         logging.error('failed authentication: ' + error)
     }
 
-    interval(async() => {
+    interval(async () => {
         try {
             poll()
         } catch (error) {
@@ -133,7 +134,7 @@ async function startWatching() {
         }
     }, pollTime * 1000)
 
-    interval(async() => {
+    interval(async () => {
         logging.info(' => polling auth')
         await authentication.authenticate()
     }, authenticate_poll_time * 1000)
